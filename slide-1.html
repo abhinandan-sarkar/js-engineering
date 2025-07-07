@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            margin: 100px auto;
+            border: 1px solid tomato;
+            height: 200px;
+            width: 400px;
+            padding: 4px;
+
+
+
+        }
+
+        .box {
+            height: 192px;
+            width: 100%;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        #img-1 {
+            background-color: blue;
+        }
+
+        #img-2 {
+            background-color: blueviolet;
+        }
+
+        #img-3 {
+            background-color: aqua;
+        }
+
+        #img-4 {
+            background-color: antiquewhite;
+        }
+
+        #img-5 {
+            background-color: brown;
+        }
+
+        .wrapper {
+            position: relative;
+
+        }
+
+        .box div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            color: #fff;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .active{
+            opacity:1 ;
+        }
+    </style>
+    <title>image Fade in out...</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="wrapper">
+            <div class="box" id="img-1">
+                <div>
+                    <div>1</div>
+                </div>
+            </div>
+            <div class="box" id="img-2">
+                <div>
+                    <div>2</div>
+                </div>
+            </div>
+            <div class="box" id="img-3">
+                <div>
+                    <div>3</div>
+                </div>
+            </div>
+            <div class="box" id="img-4">
+                <div>
+                    <div>4</div>
+                </div>
+            </div>
+            <div class="box" id="img-5">
+                <div>
+                    <div>5</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        let imgBox = document.querySelectorAll('.box');
+        let activeIndex = 0;
+        const delayBetweenFadeOutAndIn = 300; // milliseconds
+        const intervalTime = 4000;  //timer
+
+        // imgBox[activeIndex].style.zIndex = '1';
+        imgBox[activeIndex].classList.add('active');
+        function blinkAnime() {
+            imgBox[activeIndex].classList.remove('active');
+            setTimeout(()=>{
+                activeIndex = (activeIndex + 1) % imgBox.length;
+                imgBox[activeIndex].classList.add('active');
+            },delayBetweenFadeOutAndIn)
+        }
+
+
+        setInterval(blinkAnime, intervalTime);
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
