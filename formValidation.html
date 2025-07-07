@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+</head>
+<body>
+    <form action="" id="myForm" method="get" onsubmit="validateFn()">
+        Email:<input type="text" id="mail" />
+        <br/><br/>
+        <input type="submit" value="submit">
+        <span class="error" style="color:red;"></span>
+    </form>
+    <script>
+        let emailFields=document.getElementById("mail");
+        let errorMsgBox=document.querySelector('.error');
+        let form=document.getElementById('myForm');
+        let isvalid=false;
+        form.addEventListener('submit',(e)=>{
+            e.preventDefault();
+
+            //reset the email massage...
+            errorMsgBox.innerText='';
+
+            //get email value...
+            let value=emailFields.value.trim();
+            let regex= /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            //logic implementing....
+            if(value==''){
+                errorMsgBox.innerText='*Email address required';
+            }else{
+                if(!regex.test(value)){
+                    errorMsgBox.innerText='Please enter a valid email';
+                }else{
+                    isvalid=true;
+                    alert('form submitted successfully');
+                }
+            }
+
+
+        })
+        
+      
+    </script>
+    
+</body>
+</html>
